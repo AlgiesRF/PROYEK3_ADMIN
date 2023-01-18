@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="update-form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Update user</h1>
+
+          <div class="input-style-1">
+            <input type="hidden" id="update-id" />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-name">Nama:</label>
+            <input type="text" id="update-name" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-location">Alamat:</label>
+            <input type="text" id="update-location" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-title">Title:</label>
+            <input type="text" id="update-title" required />
+          </div>
+
+            <button type="submit" id="update-submit"
+              class="main-btn warning-btn rounded-full btn-hover"
+              >Update</button
+            >
+
+          
+          <!-- end input -->
+          
+        </div>
+      </div>
+
+      <!-- <input type="hidden" id="update-id" />
+      <label for="update-name">name:</label>
+      <input type="text" id="update-name" required /> -->
+      <!-- <label for="update-location">Lokasi Ditemukan:</label>
+      <input type="text" id="update-location" required /> -->
+      <!-- <label for="update-title">Waktu Ditemukan:</label>
+      <input type="text" id="update-title" required />
+      <button type="submit" id="update-submit">Update</button> -->
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/user/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      getDataById(id); //move this here
+
+      const displayDataById = (data) => {
+        document.getElementById("update-id").value = data.id;
+        document.getElementById("update-name").value = data.name;
+        document.getElementById("update-location").value =
+          data.location;
+        document.getElementById("update-title").value =
+          data.title;
+      };
+
+      document
+        .getElementById("update-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let id = document.getElementById("update-id").value;
+          let name = document.getElementById("update-name").value;
+          let location = document.getElementById(
+            "update-location"
+          ).value;
+          let title = document.getElementById(
+            "update-title"
+          ).value;
+
+          fetch(API_ENDPOINT + "/user/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: name,
+              location: location,
+              title: title,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              window.location.href = "/tabel/user.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      //   // Fetch data by id
+      //   let params = new URLSearchParams(location.search);
+      //   let id = params.get("id");
+      //   fetch("https://sbc-sebatcabut.herokuapp.com/user/" + id)
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       document.getElementById("id").value = data.id;
+      //       document.getElementById("name").value = data.name;
+      //       document.getElementById("location").value =
+      //         data.location;
+      //       document.getElementById("title").value =
+      //         data.title;
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //       console.error("Data dari API tidak sesuai");
+      //     });
+
+      //   // Event listener for update form
+      //   document
+      //     .getElementById("update-form")
+      //     .addEventListener("submit", function (object) {
+      //       object.preventDefault();
+      //       let id = document.getElementById("update-id").value;
+      //       let name = document.getElementById("update-name").value;
+      //       let location = document.getElementById(
+      //         "update-location"
+      //       ).value;
+      //       let title = document.getElementById(
+      //         "update-title"
+      //       ).value;
+      //       window.location.href = "index.html";
+
+      //       // Code untuk mengupdate data dengan id tertentu
+      //       // misal menggunakan fetch
+      //       //   fetch('API_URL' + id, {
+      //       //     method: 'PUT',
+      //       //     headers: {
+      //       //       'Content-Type': 'application/json'
+      //       //     },
+      //       //     body: JSON.stringify({
+      //       //       name: name,
+      //       //       location: location,
+      //       //       title: title
+      //       //     })
+      //       //   })
+      //       //     .then(response => response.json())
+      //       //     .then(data => {
+      //       //       console.log('Success:', data);
+      //       //     })
+      //       //     .catch((error) => {
+      //       //       console.error('Error:', error);
+      //       //     });
+      //     });
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>
