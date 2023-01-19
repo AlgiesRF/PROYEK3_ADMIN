@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Create Fosil</h1>
+
+          <div class="input-style-1">
+            <label for="">No Register:</label>
+            <input type="text" id="no_register" required/>
+          </div>
+
+          <div class="input-style-1">
+            <label for="">No Inventaris:</label>
+            <input type="text" id="no_inventaris" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Nama Koleksi:</label>
+            <input type="text" id="nama_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Lokasi Ditemukan:</label>
+            <input type="text" id="lokasi_temuan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Waktu Ditemukan:</label>
+            <input type="text" id="tahun_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Determinator</label>
+            <input type="text" id="determinator" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Keterangan</label>
+            <input type="text" id="keterangan" required />
+          </div>
+
+            <button type="submit" id="submit"
+              class="main-btn warning-btn rounded-full btn-hover"
+              >Update</button
+            >
+
+        </div>
+      </div>
+
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/fosil/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      const postData = (data) => {
+    fetch(API_ENDPOINT + '/fosil', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.location.href = "/tabel/vertebrata.html";
+        })
+        .catch(error => console.log(error));
+}
+
+
+// Mengambil elemen form
+const form = document.getElementById("form");
+
+// Menambahkan event listener untuk form submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Mengambil nilai dari input
+    const no_register = document.getElementById("no_register").value;
+    const no_inventaris = document.getElementById("no_inventaris").value;
+    const nama_koleksi = document.getElementById("nama_koleksi").value;
+    const lokasi_temuan = document.getElementById("lokasi_temuan").value;
+    const tahun_perolehan = document.getElementById("tahun_perolehan").value;
+    const determinator = document.getElementById("determinator").value;
+    const keterangan = document.getElementById("keterangan").value;
+
+    // Memanggil fungsi postData dengan nilai yang diambil dari form
+    postData({ no_register: no_register, no_inventaris: no_inventaris, nama_koleksi: nama_koleksi, lokasi_temuan: lokasi_temuan, tahun_perolehan: tahun_perolehan, determinator: determinator, keterangan: keterangan });
+});
+
+
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>create Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Create User</h1>
+
+          <div class="input-style-1">
+            <label for="">Name:</label>
+            <input type="text" id="name" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Alamat:</label>
+            <input type="text" id="location" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Title:</label>
+            <input type="text" id="title" required />
+          </div>
+
+            <button type="submit" id="create-submit"
+              class="main-btn secondary-btn rounded-full btn-hover"
+              >create</button
+            >
+
+          
+          <!-- end input -->
+          
+        </div>
+      </div>
+
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/user/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      const postData = (data) => {
+    fetch(API_ENDPOINT + '/user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.location.href = "/tabel/user.html";
+        })
+        .catch(error => console.log(error));
+}
+
+
+// Mengambil elemen form
+const form = document.getElementById("form");
+
+// Menambahkan event listener untuk form submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Mengambil nilai dari input
+    const name = document.getElementById("name").value;
+    const location = document.getElementById("location").value;
+    const title = document.getElementById("title").value;
+
+    // Memanggil fungsi postData dengan nilai yang diambil dari form
+    postData({ name: name, location: location, title: title });
+});
+
+
+
+
+
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>
