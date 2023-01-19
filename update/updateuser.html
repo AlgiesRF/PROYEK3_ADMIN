@@ -10,50 +10,50 @@
   </head>
   <body>
     <br>
-    <form id="update-form">
-      <div class="col-lg-8 container">
-        <!-- input style start -->
-        <div class="card-style mb-30">
-          <h1 class="mb-25">Update user</h1>
-
-          <div class="input-style-1">
-            <input type="hidden" id="update-id" />
+      <form id="update-form">
+        <div class="col-lg-8 container">
+          <!-- input style start -->
+          <div class="card-style mb-30">
+            <h1 class="mb-25">Update User</h1>
+  
+            <div class="input-style-1">
+              <input type="hidden" id="update-id" />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-name">Nama:</label>
+              <input type="text" id="update-name" required />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-location">Alamat:</label>
+              <input type="text" id="update-location" required />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-title">Waktu Ditemukan:</label>
+              <input type="text" id="update-title" required />
+            </div>
+  
+              <button type="submit" id="update-submit"
+                class="main-btn warning-btn rounded-full btn-hover"
+                >Update</button
+              >
+  
+            
+            <!-- end input -->
+            
           </div>
-
-          <div class="input-style-1">
-            <label for="update-name">Nama:</label>
-            <input type="text" id="update-name" required />
-          </div>
-
-          <div class="input-style-1">
-            <label for="update-location">Alamat:</label>
-            <input type="text" id="update-location" required />
-          </div>
-
-          <div class="input-style-1">
-            <label for="update-title">Title:</label>
-            <input type="text" id="update-title" required />
-          </div>
-
-            <button type="submit" id="update-submit"
-              class="main-btn warning-btn rounded-full btn-hover"
-              >Update</button
-            >
-
-          
-          <!-- end input -->
-          
         </div>
-      </div>
-
-      <!-- <input type="hidden" id="update-id" />
-      <label for="update-name">name:</label>
-      <input type="text" id="update-name" required /> -->
-      <!-- <label for="update-location">Lokasi Ditemukan:</label>
-      <input type="text" id="update-location" required /> -->
-      <!-- <label for="update-title">Waktu Ditemukan:</label>
-      <input type="text" id="update-title" required />
-      <button type="submit" id="update-submit">Update</button> -->
+  
+        <!-- <input type="hidden" id="update-id" />
+        <label for="update-nama">Nama:</label>
+        <input type="text" id="update-nama" required /> -->
+        <!-- <label for="update-location">Lokasi Ditemukan:</label>
+        <input type="text" id="update-location" required /> -->
+        <!-- <label for="update-title">Waktu Ditemukan:</label>
+        <input type="text" id="update-title" required />
+        <button type="submit" id="update-submit">Update</button> -->
     </form>
     <script>
       const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
@@ -75,10 +75,8 @@
       const displayDataById = (data) => {
         document.getElementById("update-id").value = data.id;
         document.getElementById("update-name").value = data.name;
-        document.getElementById("update-location").value =
-          data.location;
-        document.getElementById("update-title").value =
-          data.title;
+        document.getElementById("update-location").value = data.location;
+        document.getElementById("update-title").value = data.title;
       };
 
       document
@@ -87,12 +85,8 @@
           e.preventDefault();
           let id = document.getElementById("update-id").value;
           let name = document.getElementById("update-name").value;
-          let location = document.getElementById(
-            "update-location"
-          ).value;
-          let title = document.getElementById(
-            "update-title"
-          ).value;
+          let location = document.getElementById("update-location").value;
+          let title = document.getElementById("update-title").value;
 
           fetch(API_ENDPOINT + "/user/" + id, {
             method: "PUT",
@@ -169,14 +163,14 @@
       //       //     });
       //     });
     </script>
-        <script src="/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/assets/js/Chart.min.js"></script>
-        <script src="/assets/js/dynamic-pie-chart.js"></script>
-        <script src="/assets/js/moment.min.js"></script>
-        <script src="/assets/js/fullcalendar.js"></script>
-        <script src="/assets/js/jvectormap.min.js"></script>
-        <script src="/assets/js/world-merc.js"></script>
-        <script src="/assets/js/polyfill.js"></script>
-        <script src="/assets/js/main.js"></script>
+            <script src="/assets/js/bootstrap.bundle.min.js"></script>
+            <script src="/assets/js/Chart.min.js"></script>
+            <script src="/assets/js/dynamic-pie-chart.js"></script>
+            <script src="/assets/js/moment.min.js"></script>
+            <script src="/assets/js/fullcalendar.js"></script>
+            <script src="/assets/js/jvectormap.min.js"></script>
+            <script src="/assets/js/world-merc.js"></script>
+            <script src="/assets/js/polyfill.js"></script>
+            <script src="/assets/js/main.js"></script>
   </body>
 </html>

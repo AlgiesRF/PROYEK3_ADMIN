@@ -75,10 +75,8 @@
       const displayDataById = (data) => {
         document.getElementById("update-id").value = data.id;
         document.getElementById("update-nama").value = data.nama;
-        document.getElementById("update-lokasi_ditemukan").value =
-          data.lokasi_ditemukan;
-        document.getElementById("update-waktu_ditemukan").value =
-          data.waktu_ditemukan;
+        document.getElementById("update-lokasi_ditemukan").value = data.lokasi_ditemukan;
+        document.getElementById("update-waktu_ditemukan").value = data.waktu_ditemukan;
       };
 
       document
@@ -87,12 +85,8 @@
           e.preventDefault();
           let id = document.getElementById("update-id").value;
           let nama = document.getElementById("update-nama").value;
-          let lokasi_ditemukan = document.getElementById(
-            "update-lokasi_ditemukan"
-          ).value;
-          let waktu_ditemukan = document.getElementById(
-            "update-waktu_ditemukan"
-          ).value;
+          let lokasi_ditemukan = document.getElementById("update-lokasi_ditemukan").value;
+          let waktu_ditemukan = document.getElementById("update-waktu_ditemukan").value;
 
           fetch(API_ENDPOINT + "/invertebrata/" + id, {
             method: "PUT",
