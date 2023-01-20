@@ -33,9 +33,9 @@ const deleteData = (id) => {
     })
 }
 
-const displayData = (dataArray, index) => {
+const displayData = (dataArray) => {
     let output = "";
-    dataArray.forEach(function(object) {
+    dataArray.forEach(function(object, index) {
         output += `
         <tr>
         <td>${index+1}</td>
@@ -50,6 +50,7 @@ const displayData = (dataArray, index) => {
         `;
     });
     document.getElementById("result").innerHTML = output;
+
     // Event listener untuk button update
     let updateButtons = document.querySelectorAll('.update');
     updateButtons.forEach(function (button) {
@@ -76,39 +77,37 @@ const displayData = (dataArray, index) => {
             row.parentNode.removeChild(row);
         });
     });
-
-}
-
-const postData = (data) => {
-    fetch(API_ENDPOINT + '/user', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+    const postData = (data) => {
+        fetch(API_ENDPOINT + '/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-        .catch(error => console.log(error));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.log(error));
+    }
+    
+    getData();
+    // Mengambil elemen form
+    const form = document.getElementById("form");
+    
+    // Menambahkan event listener untuk form submission
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+    
+        // Mengambil nilai dari input
+        const name = document.getElementById("name").value;
+        const location = document.getElementById("location").value;
+        const title = document.getElementById("title").value;
+    
+        // Memanggil fungsi postData dengan nilai yang diambil dari form
+        postData({ name: name, location: location, title: title });
+    });
+    getData();
+
 }
-
-getData();
-// Mengambil elemen form
-const form = document.getElementById("form");
-
-// Menambahkan event listener untuk form submission
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Mengambil nilai dari input
-    const name = document.getElementById("name").value;
-    const location = document.getElementById("location").value;
-    const title = document.getElementById("title").value;
-
-    // Memanggil fungsi postData dengan nilai yang diambil dari form
-    postData({ name: name, location: location, title: title });
-});
-getData();
-
