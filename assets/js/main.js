@@ -6,7 +6,6 @@
   const menuToggleButtonIcon = document.querySelector("#menu-toggle i");
   const overlay = document.querySelector(".overlay");
 
-  getData();
 
   menuToggleButton.addEventListener("click", () => {
     sidebarNavWrapper.classList.toggle("active");
