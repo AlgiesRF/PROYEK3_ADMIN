@@ -37,10 +37,10 @@ const deleteData = (id) => {
 
 const displayData = (dataArray) => {
     let output = "";
-    dataArray.forEach(function(object) {
+    dataArray.forEach(function(object, index) {
         output += `
         <tr>
-        <td>${object.id}</td>
+        <td>${index+1}</td>
         <td>${object.no_register}</td>
         <td>${object.no_inventaris}</td>
         <td>${object.nama_koleksi}</td>
