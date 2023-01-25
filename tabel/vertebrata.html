@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="/assets/css/main.css" />
+    
+    <link href="/assets/css/paging.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/assets/js/jquery.table.hpaging.min.js"></script>
+
+
     <style>
       table {
         font-family: arial, sans-serif;
@@ -393,13 +400,21 @@
           <div class="tables-wrapper">
             <div class="row">
               <div class="col-lg-12">
+
+                <div>
+                  <input id="pglmt" placeholder="Page Limit" title="Page Limit" value="10" />
+                  <button id="btnApply deactive-btn rounded-md btn-hover">Apply</button>
+              </div>
+
+              <br>
+
                 <div class="card-style mb-30">
                   <h6 class="mb-10">Data Vertebrata</h6>
                   <!-- <p class="text-sm mb-20">
                     For basic styling—light padding and only horizontal
                     dividers—use the class table.
                   </p> -->
-                  <table>
+                  <table style="width:100%" id="result1">
                     <tbody id="result"></tbody>
                     <thead>
                       <tr>
@@ -409,10 +424,20 @@
                         <th>Waktu Ditemukan</th>
                         <th>Action</th>
                       </tr>
-                    </thead>
+                    </thead> 
                   </table>
                   <script src="/assets/js/vertebrata/vanilla.js"></script>
                 </div>
+                <script type="text/javascript">
+                  $(function () {
+                      $("#result1").hpaging({ "limit": 2 });
+                  });
+          
+                  $("#btnApply").click(function () {
+                      var lmt = $("#pglmt").val();
+                      $("#result1").hpaging("newLimit", lmt);
+                  });
+              </script>
                 <!-- end card -->
               </div>
               <!-- end col -->
