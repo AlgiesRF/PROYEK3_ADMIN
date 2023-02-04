@@ -14,28 +14,38 @@
       <div class="col-lg-8 container">
         <!-- input style start -->
         <div class="card-style mb-30">
-          <h1 class="mb-25">Update Invertebrata</h1>
+          <h1 class="mb-25">Update Lokasi Temuan</h1>
 
           <div class="input-style-1">
             <input type="hidden" id="update-id" />
           </div>
 
           <div class="input-style-1">
-            <label for="update-nama">Nama:</label>
-            <input type="text" id="update-nama" required />
+            <label for="update-lokasi">Lokasi:</label>
+            <input type="text" id="update-lokasi" required />
           </div>
 
           <div class="input-style-1">
-            <label for="update-lokasi_ditemukan">Lokasi Ditemukan:</label>
-            <input type="text" id="update-lokasi_ditemukan" required />
+            <label for="update-kelurahan">Kelurahan:</label>
+            <input type="text" id="update-kelurahan" required />
           </div>
 
           <div class="input-style-1">
-            <label for="update-waktu_ditemukan">Waktu Ditemukan:</label>
-            <input type="text" id="update-waktu_ditemukan" required />
+            <label for="update-kecamatan">Kecamatan:</label>
+            <input type="text" id="update-kecamatan" required />
           </div>
 
-            <a href="/tabel/invertebrata.html" class="main-btn dark-btn rounded-full btn-hover"
+          <div class="input-style-1">
+            <label for="update-kota">Kota:</label>
+            <input type="text" id="update-kota" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-provinsi">Provinsi:</label>
+            <input type="text" id="update-provinsi" required />
+          </div>
+
+            <a href="/tabel/lokasitemuan.html" class="main-btn dark-btn rounded-full btn-hover"
             >BACK
             </a>
 
@@ -51,12 +61,12 @@
       </div>
 
       <!-- <input type="hidden" id="update-id" />
-      <label for="update-nama">Nama:</label>
-      <input type="text" id="update-nama" required /> -->
-      <!-- <label for="update-lokasi_ditemukan">Lokasi Ditemukan:</label>
-      <input type="text" id="update-lokasi_ditemukan" required /> -->
-      <!-- <label for="update-waktu_ditemukan">Waktu Ditemukan:</label>
-      <input type="text" id="update-waktu_ditemukan" required />
+      <label for="update-lokasi">lokasi:</label>
+      <input type="text" id="update-lokasi" required /> -->
+      <!-- <label for="update-kelurahan">Lokasi Ditemukan:</label>
+      <input type="text" id="update-kelurahan" required /> -->
+      <!-- <label for="update-kecamatan">Waktu Ditemukan:</label>
+      <input type="text" id="update-kecamatan" required />
       <button type="submit" id="update-submit">Update</button> -->
     </form>
     <script>
@@ -66,7 +76,7 @@
       let id = params.get("id");
 
       const getDataById = (id) => {
-        fetch(API_ENDPOINT + "/invertebrata/" + id)
+        fetch(API_ENDPOINT + "/lokasitemuan/" + id)
           .then((response) => response.json())
           .then((data) => {
             displayDataById(data.data.data);
@@ -78,11 +88,11 @@
 
       const displayDataById = (data) => {
         document.getElementById("update-id").value = data.id;
-        document.getElementById("update-nama").value = data.nama;
-        document.getElementById("update-lokasi_ditemukan").value =
-          data.lokasi_ditemukan;
-        document.getElementById("update-waktu_ditemukan").value =
-          data.waktu_ditemukan;
+        document.getElementById("update-lokasi").value = data.lokasi;
+        document.getElementById("update-kelurahan").value = data.kelurahan;
+        document.getElementById("update-kecamatan").value = data.kecamatan;
+        document.getElementById("update-kota").value = data.kota;
+        document.getElementById("update-provinsi").value = data.provinsi;
       };
 
       document
@@ -90,29 +100,29 @@
         .addEventListener("submit", function (e) {
           e.preventDefault();
           let id = document.getElementById("update-id").value;
-          let nama = document.getElementById("update-nama").value;
-          let lokasi_ditemukan = document.getElementById(
-            "update-lokasi_ditemukan"
-          ).value;
-          let waktu_ditemukan = document.getElementById(
-            "update-waktu_ditemukan"
-          ).value;
+          let lokasi = document.getElementById("update-lokasi").value;
+          let kelurahan = document.getElementById("update-kelurahan").value;
+          let kecamatan = document.getElementById("update-kecamatan").value;
+          let kota = document.getElementById("update-kota").value;
+          let provinsi = document.getElementById("update-provinsi").value;
 
-          fetch(API_ENDPOINT + "/invertebrata/" + id, {
+          fetch(API_ENDPOINT + "/lokasitemuan/" + id, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              nama: nama,
-              lokasi_ditemukan: lokasi_ditemukan,
-              waktu_ditemukan: waktu_ditemukan,
+              lokasi: lokasi,
+              kelurahan: kelurahan,
+              kecamatan: kecamatan,
+              kota: kota,
+              provinsi: provinsi,
             }),
           })
             .then((response) => response.json())
             .then((data) => {
               console.log("Success:", data);
-              window.location.href = "/tabel/invertebrata.html";
+              window.location.href = "/tabel/lokasitemuan.html";
             })
             .catch((error) => {
               console.error("Error:", error);
@@ -121,15 +131,15 @@
       //   // Fetch data by id
       //   let params = new URLSearchParams(location.search);
       //   let id = params.get("id");
-      //   fetch("https://sbc-sebatcabut.herokuapp.com/invertebrata/" + id)
+      //   fetch("https://sbc-sebatcabut.herokuapp.com/lokasitemuan/" + id)
       //     .then((response) => response.json())
       //     .then((data) => {
       //       document.getElementById("id").value = data.id;
-      //       document.getElementById("nama").value = data.nama;
-      //       document.getElementById("lokasi_ditemukan").value =
-      //         data.lokasi_ditemukan;
-      //       document.getElementById("waktu_ditemukan").value =
-      //         data.waktu_ditemukan;
+      //       document.getElementById("lokasi").value = data.lokasi;
+      //       document.getElementById("kelurahan").value =
+      //         data.kelurahan;
+      //       document.getElementById("kecamatan").value =
+      //         data.kecamatan;
       //     })
       //     .catch((error) => {
       //       console.error(error);
@@ -142,12 +152,12 @@
       //     .addEventListener("submit", function (object) {
       //       object.preventDefault();
       //       let id = document.getElementById("update-id").value;
-      //       let nama = document.getElementById("update-nama").value;
-      //       let lokasi_ditemukan = document.getElementById(
-      //         "update-lokasi_ditemukan"
+      //       let lokasi = document.getElementById("update-lokasi").value;
+      //       let kelurahan = document.getElementById(
+      //         "update-kelurahan"
       //       ).value;
-      //       let waktu_ditemukan = document.getElementById(
-      //         "update-waktu_ditemukan"
+      //       let kecamatan = document.getElementById(
+      //         "update-kecamatan"
       //       ).value;
       //       window.location.href = "index.html";
 
@@ -159,9 +169,9 @@
       //       //       'Content-Type': 'application/json'
       //       //     },
       //       //     body: JSON.stringify({
-      //       //       nama: nama,
-      //       //       lokasi_ditemukan: lokasi_ditemukan,
-      //       //       waktu_ditemukan: waktu_ditemukan
+      //       //       lokasi: lokasi,
+      //       //       kelurahan: kelurahan,
+      //       //       kecamatan: kecamatan
       //       //     })
       //       //   })
       //       //     .then(response => response.json())

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Sign Up | PlainAdmin Demo</title>
+
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="update-form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Update Bebatuan</h1>
+
+          <div class="input-style-1">
+            <input type="hidden" id="update-id" />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-no_register">No Register:</label>
+            <input type="text" id="update-no_register" required/>
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-no_inventaris">No Inventaris:</label>
+            <input type="text" id="update-no_inventaris" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kode_bmn">kode_bmn:</label>
+            <input type="text" id="update-kode_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nup_bmn">nup_bmn:</label>
+            <input type="text" id="update-nup_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-merk_bmn">merk_bmn:</label>
+            <input type="text" id="update-merk_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-satuan">satuan:</label>
+            <input type="text" id="update-satuan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kelompok_koleksi">kelompok_koleksi:</label>
+            <input type="text" id="update-kelompok_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-jenis_koleksi">jenis_koleksi:</label>
+            <input type="text" id="update-jenis_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-sub_jenis_koleksi">sub_jenis_koleksi:</label>
+            <input type="text" id="update-sub_jenis_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kode_jenis_koleksi">kode_jenis_koleksi:</label>
+            <input type="text" id="update-kode_jenis_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-ruang_simpan">ruang_simpan:</label>
+            <input type="text" id="update-ruang_simpan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-lokasi_simpan">lokasi_simpan:</label>
+            <input type="text" id="update-lokasi_simpan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kondisi">kondisi:</label>
+            <input type="text" id="update-kondisi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nama_koleksi">nama_koleksi:</label>
+            <input type="text" id="update-nama_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-keterangan">keterangan:</label>
+            <input type="text" id="update-keterangan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nama_formasi">nama_formasi:</label>
+            <input type="text" id="update-nama_formasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-lokasi_temuan">lokasi_temuan:</label>
+            <input type="text" id="update-lokasi_temuan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-koordinat">koordinat:</label>
+            <input type="text" id="update-koordinat" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-pulau">pulau:</label>
+            <input type="text" id="update-pulau" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-peta">peta:</label>
+            <input type="text" id="update-peta" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-lembar_peta">lembar_peta:</label>
+            <input type="text" id="update-lembar_peta" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-skala">skala:</label>
+            <input type="text" id="update-skala" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-cara_perolehan">cara_perolehan:</label>
+            <input type="text" id="update-cara_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-tahun_perolehan">tahun_perolehan:</label>
+            <input type="text" id="update-tahun_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kolektor">kolektor:</label>
+            <input type="text" id="update-kolektor" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kepemilikan">kepemilikan:</label>
+            <input type="text" id="update-kepemilikan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-operator">operator:</label>
+            <input type="text" id="update-operator" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-tanggal_dicatat">tanggal_dicatat:</label>
+            <input type="text" id="update-tanggal_dicatat" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nilai_perolehan">nilai_perolehan:</label>
+            <input type="text" id="update-nilai_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nilai_buku">nilai_buku:</label>
+            <input type="text" id="update-nilai_buku" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-foto">foto:</label>
+            <input type="text" id="update-foto" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-foto_2">foto 2:</label>
+            <input type="text" id="update-foto_2" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-foto_3">foto 3:</label>
+            <input type="text" id="update-foto_3" required />
+          </div>
+
+            <a href="/tabel/batuan.html" class="main-btn dark-btn rounded-full btn-hover"
+            >BACK
+            </a>
+
+            <button type="submit" id="update-submit"
+              class="main-btn warning-btn rounded-full btn-hover"
+              >UPDATE</button
+            >
+
+        </div>
+      </div>
+
+      <!-- <input type="hidden" id="update-id" />
+      <label for="update-no_register">No Register:</label>
+      <input type="text" id="update-no_register" required /> -->
+      <!-- <label for="update-no_inventaris">No Inventaris:</label>
+      <input type="text" id="update-no_inventaris" required /> -->
+      <!-- <label for="update-nama_koleksi">Nama Koleksi:</label>
+      <input type="text" id="update-nama_koleksi" required />
+      <label for="update-lokasi_temuan">Lokasi Ditemukan:</label>
+      <input type="text" id="update-lokasi_temuan" required /> -->
+      <!-- <label for="update-tahun_perolehan">Waktu Ditemukan:</label>
+      <input type="text" id="update-tahun_perolehan" required />
+      <label for="update-determinator">Determinator:</label>
+      <input type="text" id="update-determinator" required />
+      <label for="update-keterangan">Keterangan:</label>
+      <input type="text" id="update-keterangan" required />
+      <button type="submit" id="update-submit">Update</button> -->
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/batuan/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      getDataById(id); //move this here
+
+      const displayDataById = (data) => {
+        document.getElementById("update-id").value = data.id;
+        document.getElementById("update-no_register").value = data.no_register;
+        document.getElementById("update-no_inventaris").value = data.no_inventaris;
+        document.getElementById("update-kode_bmn").value = data.kode_bmn;
+        document.getElementById("update-nup_bmn").value = data.nup_bmn;
+        document.getElementById("update-merk_bmn").value = data.merk_bmn;
+        document.getElementById("update-satuan").value = data.satuan;
+        document.getElementById("update-kelompok_koleksi").value = data.kelompok_koleksi;
+        document.getElementById("update-jenis_koleksi").value = data.jenis_koleksi;
+        document.getElementById("update-sub_jenis_koleksi").value = data.sub_jenis_koleksi;
+        document.getElementById("update-kode_jenis_koleksi").value = data.kode_jenis_koleksi;
+        document.getElementById("update-ruang_simpan").value = data.ruang_simpan;
+        document.getElementById("update-lokasi_simpan").value = data.lokasi_simpan;
+        document.getElementById("update-kondisi").value = data.kondisi;
+        document.getElementById("update-nama_koleksi").value = data.nama_koleksi;
+        document.getElementById("update-keterangan").value = data.keterangan;
+        document.getElementById("update-nama_formasi").value = data.nama_formasi;
+        document.getElementById("update-lokasi_temuan").value = data.lokasi_temuan;
+        document.getElementById("update-koordinat").value = data.koordinat;
+        document.getElementById("update-pulau").value = data.pulau;
+        document.getElementById("update-peta").value = data.peta;
+        document.getElementById("update-lembar_peta").value = data.lembar_peta;
+        document.getElementById("update-skala").value = data.skala;
+        document.getElementById("update-cara_perolehan").value = data.cara_perolehan;
+        document.getElementById("update-tahun_perolehan").value = data.tahun_perolehan;
+        document.getElementById("update-kolektor").value = data.kolektor;
+        document.getElementById("update-kepemilikan").value = data.kepemilikan;
+        document.getElementById("update-operator").value = data.operator;
+        document.getElementById("update-tanggal_dicatat").value = data.tanggal_dicatat;
+        document.getElementById("update-nilai_perolehan").value = data.nilai_perolehan;
+        document.getElementById("update-nilai_buku").value = data.nilai_buku;
+        document.getElementById("update-foto").value = data.foto;
+        document.getElementById("update-foto_2").value = data.foto_2;
+    document.getElementById("update-foto_3").value = data.foto_3;
+      };
+
+      document
+        .getElementById("update-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let no_register = document.getElementById("update-no_register").value;
+          let no_inventaris = document.getElementById("update-no_inventaris").value;
+          let kode_bmn = document.getElementById("update-kode_bmn").value;
+          let nup_bmn = document.getElementById("update-nup_bmn").value;
+          let merk_bmn = document.getElementById("update-merk_bmn").value;
+          let satuan = document.getElementById("update-satuan").value;
+          let kelompok_koleksi = document.getElementById("update-kelompok_koleksi").value;
+          let jenis_koleksi = document.getElementById("update-jenis_koleksi").value;
+          let sub_jenis_koleksi = document.getElementById("update-sub_jenis_koleksi").value;
+          let kode_jenis_koleksi = document.getElementById("update-kode_jenis_koleksi").value;
+          let ruang_simpan = document.getElementById("update-ruang_simpan").value;
+          let lokasi_simpan = document.getElementById("update-lokasi_simpan").value;
+          let kondisi = document.getElementById("update-kondisi").value;
+          let nama_koleksi = document.getElementById("update-nama_koleksi").value;
+          let keterangan = document.getElementById("update-keterangan").value;
+          let nama_formasi = document.getElementById("update-nama_formasi").value;
+          let lokasi_temuan = document.getElementById("update-lokasi_temuan").value;
+          let koordinat = document.getElementById("update-koordinat").value;
+          let pulau = document.getElementById("update-pulau").value;
+          let peta = document.getElementById("update-peta").value;
+          let lembar_peta = document.getElementById("update-lembar_peta").value;
+          let skala = document.getElementById("update-skala").value;
+          let cara_perolehan = document.getElementById("update-cara_perolehan").value;
+          let tahun_perolehan = document.getElementById("update-tahun_perolehan").value;
+          let kolektor = document.getElementById("update-kolektor").value;
+          let kepemilikan = document.getElementById("update-kepemilikan").value;
+          let operator = document.getElementById("update-operator").value;
+          let tanggal_dicatat = document.getElementById("update-tanggal_dicatat").value;
+          let nilai_perolehan = document.getElementById("update-nilai_perolehan").value;
+          let nilai_buku = document.getElementById("update-nilai_buku").value;
+          let foto = document.getElementById("update-foto").value;
+          let foto_2 = document.getElementById("update-foto_2").value;
+          let foto_3 = document.getElementById("update-foto_3").value;
+
+          fetch(API_ENDPOINT + "/batuan/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              no_register: no_register, 
+              no_inventaris: no_inventaris, 
+              kode_bmn: kode_bmn, 
+              nup_bmn: nup_bmn, 
+              merk_bmn: merk_bmn, 
+              satuan: satuan, 
+              kelompok_koleksi: kelompok_koleksi, 
+              jenis_koleksi: jenis_koleksi, 
+              sub_jenis_koleksi: sub_jenis_koleksi, 
+              kode_jenis_koleksi: kode_jenis_koleksi,
+              ruang_simpan: ruang_simpan, 
+              lokasi_simpan: lokasi_simpan, 
+              kondisi: kondisi, 
+              nama_koleksi: nama_koleksi, 
+              keterangan: keterangan, 
+              nama_formasi: nama_formasi, 
+              lokasi_temuan: lokasi_temuan, 
+              koordinat: koordinat, 
+              pulau: pulau, 
+              peta: peta, 
+              lembar_peta: lembar_peta, 
+              skala: skala, 
+              cara_perolehan: cara_perolehan, 
+              tahun_perolehan: tahun_perolehan, 
+              kolektor: kolektor, 
+              kepemilikan: kepemilikan, 
+              operator: operator, 
+              tanggal_dicatat: tanggal_dicatat, 
+              nilai_perolehan: nilai_perolehan, 
+              nilai_buku: nilai_buku, 
+              foto: foto, 
+              foto_2: foto_2, 
+              foto_3: foto_3,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              window.location.href = "/tabel/batuan.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      //   // Fetch data by id
+      //   let params = new URLSearchParams(location.search);
+      //   let id = params.get("id");
+      //   fetch("https://sbc-sebatcabut.herokuapp.com/batuan/" + id)
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       document.getElementById("id").value = data.id;
+      //       document.getElementById("nama_koleksi").value = data.nama_koleksi;
+      //       document.getElementById("lokasi_ditemukan").value =
+      //         data.lokasi_ditemukan;
+      //       document.getElementById("waktu_ditemukan").value =
+      //         data.waktu_ditemukan;
+      //     })
+      //     .catch((error) => {
+      //       console.error(error);
+      //       console.error("Data dari API tidak sesuai");
+      //     });
+
+      //   // Event listener for update form
+      //   document
+      //     .getElementById("update-form")
+      //     .addEventListener("submit", function (object) {
+      //       object.preventDefault();
+      //       let id = document.getElementById("update-id").value;
+      //       let nama_koleksi = document.getElementById("update-nama_koleksi").value;
+      //       let lokasi_ditemukan = document.getElementById(
+      //         "update-lokasi_ditemukan"
+      //       ).value;
+      //       let waktu_ditemukan = document.getElementById(
+      //         "update-waktu_ditemukan"
+      //       ).value;
+      //       window.location.href = "index.html";
+
+      //       // Code untuk mengupdate data dengan id tertentu
+      //       // misal menggunakan fetch
+      //       //   fetch('API_URL' + id, {
+      //       //     method: 'PUT',
+      //       //     headers: {
+      //       //       'Content-Type': 'application/json'
+      //       //     },
+      //       //     body: JSON.stringify({
+      //       //       nama_koleksi: nama_koleksi,
+      //       //       lokasi_ditemukan: lokasi_ditemukan,
+      //       //       waktu_ditemukan: waktu_ditemukan
+      //       //     })
+      //       //   })
+      //       //     .then(response => response.json())
+      //       //     .then(data => {
+      //       //       console.log('Success:', data);
+      //       //     })
+      //       //     .catch((error) => {
+      //       //       console.error('Error:', error);
+      //       //     });
+      //     });
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>

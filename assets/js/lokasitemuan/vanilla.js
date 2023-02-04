@@ -1,7 +1,7 @@
 const API_ENDPOINT = 'https://sbc-sebatcabut.herokuapp.com';
 
 const getData = () => {
-    fetch(API_ENDPOINT + '/invertebratas')
+    fetch(API_ENDPOINT + '/lokasitemuans')
         .then(response => response.json())
         .then(data => {
             displayData(data.data.data);
@@ -12,7 +12,7 @@ const getData = () => {
 getData();
 
 const getDataById = (id) => {
-    fetch(API_ENDPOINT + '/invertebrata/' + id)
+    fetch(API_ENDPOINT + '/lokasitemuan/' + id)
         .then(response => response.json())
         .then(data => {
             displayDataById(data.data);
@@ -22,13 +22,15 @@ const getDataById = (id) => {
 
 const displayDataById = (data) => {
     document.getElementById("id").value = data.id;
-    document.getElementById("nama").value = data.nama;
-    document.getElementById("lokasi_ditemukan").value = data.lokasi_ditemukan;
-    document.getElementById("waktu_ditemukan").value = data.waktu_ditemukan;
+    document.getElementById("lokasi").value = data.lokasi;
+    document.getElementById("kelurahan").value = data.kelurahan;
+    document.getElementById("kecamatan").value = data.kecamatan;
+    document.getElementById("kota").value = data.kota;
+    document.getElementById("provinsi").value = data.provinsi;
 }
 
 const deleteData = (id) => {
-    fetch(API_ENDPOINT + '/invertebrata/' + id, {
+    fetch(API_ENDPOINT + '/lokasitemuan/' + id, {
         method: 'DELETE'
     })
 }
@@ -39,9 +41,11 @@ const displayData = (dataArray) => {
         output += `
         <tr>
         <td>${index+1}</td>
-        <td>${object.nama}</td>
-        <td>${object.lokasi_ditemukan}</td>
-        <td>${object.waktu_ditemukan}</td>
+        <td>${object.lokasi}</td>
+        <td>${object.kelurahan}</td>
+        <td>${object.kecamatan}</td>
+        <td>${object.kota}</td>
+        <td>${object.provinsi}</td>
         <td>
         <button class="update btn btn-warning" data-id="${object.id}">Update</button>
         <button class="delete btn btn-danger" data-id="${object.id}">Delete</button>
@@ -57,14 +61,16 @@ const displayData = (dataArray) => {
         button.addEventListener('click', function () {
             let id = this.getAttribute('data-id');
             getDataById(id);
-            window.location.href = '/update/updateinvertebrata.html?id=' + id;
+            window.location.href = '/update/updatelokasitemuan.html?id=' + id;
             let dataObject = dataArray.find(function (object) {
                 return object.id === id;
             });
             document.getElementById("update-id").value = dataObject.id;
-            document.getElementById("update-nama").value = dataObject.nama;
-            document.getElementById("update-lokasi_ditemukan").value = dataObject.lokasi_ditemukan;
-            document.getElementById("update-waktu_ditemukan").value = dataObject.waktu_ditemukan;
+            document.getElementById("update-lokasi").value = dataObject.lokasi;
+            document.getElementById("update-kelurahan").value = dataObject.kelurahan;
+            document.getElementById("update-kecamatan").value = dataObject.kecamatan;
+            document.getElementById("update-kota").value = dataObject.kota;
+            document.getElementById("update-provinsi").value = dataObject.provinsi;
         });
     });
     
@@ -80,7 +86,7 @@ const displayData = (dataArray) => {
 
 }
     const postData = (data) => {
-        fetch(API_ENDPOINT + '/invertebrata', {
+        fetch(API_ENDPOINT + '/lokasitemuan', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,12 +109,14 @@ const displayData = (dataArray) => {
         e.preventDefault();
     
         // Mengambil nilai dari input
-        const nama = document.getElementById("nama").value;
         const lokasi = document.getElementById("lokasi").value;
-        const waktu = document.getElementById("waktu").value;
+        const kelurahan = document.getElementById("kelurahan").value;
+        const kecamatan = document.getElementById("kecamatan").value;
+        const kota = document.getElementById("kota").value;
+        const provinsi = document.getElementById("provinsi").value;
     
         // Memanggil fungsi postData dengan nilai yang diambil dari form
-        postData({ nama: nama, lokasi_ditemukan: lokasi, waktu_ditemukan: waktu });
+        postData({ lokasi: lokasi, kelurahan: kelurahan, kecamatan: kecamatan, kota: kota, provinsi: provinsi,});
     });
     getData();
 

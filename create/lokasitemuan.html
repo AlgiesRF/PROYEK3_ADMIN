@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>create Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Create Lokasi Temuan</h1>
+
+          <div class="input-style-1">
+            <label for="">Lokasi:</label>
+            <input type="text" id="lokasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Kelurahan:</label>
+            <input type="text" id="kelurahan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Kecamatan:</label>
+            <input type="text" id="kecamatan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Kota:</label>
+            <input type="text" id="kota" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Provinsi:</label>
+            <input type="text" id="provinsi" required />
+          </div>
+
+            <a href="/tabel/lokasitemuan.html" class="main-btn dark-btn rounded-full btn-hover"
+            >BACK
+            </a>
+
+            <button type="submit" id="create-submit"
+              class="main-btn secondary-btn rounded-full btn-hover"
+              >CREATE</button
+            >
+
+          
+          <!-- end input -->
+          
+        </div>
+      </div>
+
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/lokasitemuan/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      const postData = (data) => {
+    fetch(API_ENDPOINT + '/lokasitemuan', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.location.href = "/tabel/lokasitemuan.html";
+        })
+        .catch(error => console.log(error));
+}
+
+
+// Mengambil elemen form
+const form = document.getElementById("form");
+
+// Menambahkan event listener untuk form submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Mengambil nilai dari input
+    const lokasi = document.getElementById("lokasi").value;
+    const kelurahan = document.getElementById("kelurahan").value;
+    const kecamatan = document.getElementById("kecamatan").value;
+    const kota = document.getElementById("kota").value;
+    const provinsi = document.getElementById("provinsi").value;
+
+    // Memanggil fungsi postData dengan nilai yang diambil dari form
+    postData({lokasi: lokasi, kelurahan: kelurahan, kecamatan: kecamatan, kota: kota, provinsi: provinsi,});
+});
+
+
+
+
+
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>

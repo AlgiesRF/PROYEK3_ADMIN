@@ -9,7 +9,8 @@
       href="/assets/images/favicon.svg"
       type="/image/x-icon"
     />
-    <title>Tabel Invertebrata | PlainAdmin Demo</title>
+    <title>Tabel Sumber Daya Geologi | PlainAdmin Demo</title>
+
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/css/lineicons.css" />
@@ -22,6 +23,7 @@
         border-collapse: collapse;
         width: 100%;
       }
+    
       td, th {
         border: 1px solid #dddddd;
         text-align: left;
@@ -67,8 +69,9 @@
                 <a href="/index.html"> Museum </a>
               </li>
             </ul>
-          </li> 
-          <li class="nav-item active">
+          </li>
+          
+          <li class="nav-item">
             <a href="/tabel/user.html">
               <span class="icon">
                 <svg
@@ -104,7 +107,7 @@
               <span class="text">Lokasi Temuan</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a href="/tabel/sumberdayageologi.html">
               <span class="icon">
                 <svg
@@ -195,12 +198,14 @@
             </a>
           </li>
           <span class="divider"><hr /></span>
+
         </ul>
       </nav>
-      </div>
     </aside>
+
     <div class="overlay"></div>
     <!-- ======== sidebar-nav end =========== -->
+
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
       <!-- ========== header start ========== -->
@@ -241,6 +246,7 @@
         </div>
       </header>
       <!-- ========== header end ========== -->
+
       <!-- ========== table components start ========== -->
       <section class="table-components">
         <div class="container-fluid">
@@ -249,9 +255,9 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title mb-30">
-                  <h2>User</h2>
+                  <h2>Sumber Daya Geologi</h2>
                   <br>
-                  <a href="/create/user.html" class="
+                  <a href="/create/sumberdayageologi.html" class="
                   main-btn
                   secondary-btn-outline
                   rounded-md
@@ -269,7 +275,7 @@
                         <a href="#0">Dashboard</a>
                       </li>
                       <li class="breadcrumb-item active" aria-current="page">
-                        User
+                        Sumber Daya Geologi
                       </li>
                     </ol>
                   </nav>
@@ -280,18 +286,19 @@
             <!-- end row -->
           </div>
           <!-- ========== title-wrapper end ========== -->
+
           <!-- ========== tables-wrapper start ========== -->
-          <div class="tables-wrapper">
+          <div class="tables-wrapper ">
             <div class="row">
               <div class="col-lg-12">
-                <div class="card-style mb-30">
-                  <h6 class="mb-10">Data User</h6>
+                <div class="card-style mb-30 table-responsive">
+                  <h6 class="mb-10">Data Sumber Daya Geologi</h6>
                   <!-- <p class="text-sm mb-20">
                     For basic styling—light padding and only horizontal
                     dividers—use the class table.
                   </p> -->
+
                   <!--SEARCH-->
-                  <!-- <input class="mb-10" type='text' id='input' onkeyup='searchTable()' placeholder="Cari Disini..."> -->
                   <script>
                     function searchTable() {
                         var input;
@@ -322,19 +329,41 @@
                         }
                     }
                   </script>
+
                   <table>
                     <tbody id="result"></tbody>
                     <thead>
-                        <tr>
-                          <th>No</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>title</th>
-                            <th>Action</th>
-                        </tr>
+                      <tr>
+                        <th>No</th>
+                        <th>No Register</th>
+                        <th>No inventaris</th>
+                        <th>Kode bmn</th>
+                        <th>nup bmn</th>
+                        <th>merk bmn</th>
+                        <th>Kelompok Koleksi</th>
+                        <th>Jenis Koleksi</th>
+                        <th>Sub Jenis Koleksi</th>
+                        <th>Kode Jenis Koleksi</th>
+                        <th>Ruang Simpan</th>
+                        <th>Lokasi Simpan</th>
+                        <th>Kondisi</th>
+                        <th>Nama Koleksi</th>
+                        <th>Keterangan</th>
+                        <th>Lokasi Temuan</th>
+                        <th>Pulau</th>
+                        <th>Cara Perolehan</th>
+                        <th>Tahun Perolehan</th>
+                        <th>Kolektor</th>
+                        <th>Kepemilikan</th>
+                        <th>Operator</th>
+                        <th>Tanggal Dicatat</th>
+                        <th>Nilai Perolehan</th>
+                        <th>Nilai Buku</th>
+                        <th>Action</th>
+                      </tr>
                     </thead>
                   </table>
-                  <script src="/assets/js/user/vanilla.js"></script>
+                  <script src="/assets/js/sumberdayageologi/vanilla.js"></script>
                 </div>
                 <!-- end card -->
               </div>
@@ -342,13 +371,15 @@
             </div>
             <!-- end row -->
           </div>
+          
           <!-- ========== tables-wrapper end ========== -->
         </div>
         <!-- end container -->
       </section>
       <!-- ========== table components end ========== -->
+
       <!-- ========== footer start =========== -->
-      <footer class="content-footer footer bg-footer-theme">
+       <footer class="footer">
             <!-- end col-->
             <div class="col-md-6">
               <div
@@ -370,6 +401,7 @@
       <!-- ========== footer end =========== -->
     </main>
     <!-- ======== main-wrapper end =========== -->
+
     <!-- ========= All Javascript files linkup ======== -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/Chart.min.js"></script>
