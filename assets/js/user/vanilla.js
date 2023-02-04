@@ -31,6 +31,13 @@ const deleteData = (id) => {
     fetch(API_ENDPOINT + '/user/' + id, {
         method: 'DELETE'
     })
+    let msg = "Apakah anda yakin ingin mengahapus data tersebut?"
+    agree = confirm(msg)
+     if (agree){
+       return true;
+     }else{
+       return  e.preventDefault();
+     };
 }
 
 const displayData = (dataArray) => {

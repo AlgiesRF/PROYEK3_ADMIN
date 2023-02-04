@@ -31,6 +31,15 @@ const deleteData = (id) => {
     fetch(API_ENDPOINT + '/invertebrata/' + id, {
         method: 'DELETE'
     })
+    let msg = "Apakah anda yakin ingin mengahapus data tersebut?"
+    agree = confirm(msg)
+     if (agree){
+       return true;
+     }else{
+       return  e.preventDefault();
+     };
+    // let konfirmasi = confirm("Apakah anda yakin ingin mengahapus data tersebut?");
+    // alert( msg );
 }
 
 const displayData = (dataArray) => {
@@ -49,6 +58,7 @@ const displayData = (dataArray) => {
         </tr>
         `;
     });
+    
     document.getElementById("result").innerHTML = output;
 
     // Event listener untuk button update
@@ -75,7 +85,7 @@ const displayData = (dataArray) => {
             deleteData(id);
             let row = this.parentNode.parentNode;
             row.parentNode.removeChild(row);
-        });
+        });        
     });
 
 }
