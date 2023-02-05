@@ -17,18 +17,153 @@
           <h1 class="mb-25">Create Vertebrata</h1>
 
           <div class="input-style-1">
-            <label for="">Nama:</label>
-            <input type="text" id="nama" required />
+            <label for="">No Register:</label>
+            <input type="text" id="registrasi" required/>
           </div>
 
           <div class="input-style-1">
-            <label for="">Lokasi Ditemukan:</label>
-            <input type="text" id="lokasi_ditemukan" required />
+            <label for="">No ventaris:</label>
+            <input type="text" id="ventarisasi" required />
           </div>
 
           <div class="input-style-1">
-            <label for="">Waktu Ditemukan:</label>
-            <input type="text" id="waktu_ditemukan" required />
+            <label for="">laci:</label>
+            <input type="text" id="laci" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">kotak:</label>
+            <input type="text" id="kotak" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">koleksi_baru:</label>
+            <input type="text" id="koleksi_baru" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">koleksi_lama:</label>
+            <input type="text" id="koleksi_lama" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">pulau:</label>
+            <input type="text" id="pulau" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">spesies:</label>
+            <input type="text" id="spesies" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">famili:</label>
+            <input type="text" id="famili" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">jenis_koleksi:</label>
+            <input type="text" id="jenis_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">determinasi:</label>
+            <input type="text" id="determinasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">spesimen:</label>
+            <input type="text" id="spesimen" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">tipe_koleksi:</label>
+            <input type="text" id="tipe_koleksi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">jumlah_utuh:</label>
+            <input type="text" id="jumlah_utuh" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">jumlah_pecahan:</label>
+            <input type="text" id="jumlah_pecahan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">jumlah_gabungan:</label>
+            <input type="text" id="jumlah_gabungan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">lokasi:</label>
+            <input type="text" id="lokasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">koordinat_lokasi:</label>
+            <input type="text" id="koordinat_lokasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">formasi:</label>
+            <input type="text" id="formasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">cara_perolehan:</label>
+            <input type="text" id="cara_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">umur:</label>
+            <input type="text" id="umur" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">referensi_publikasi:</label>
+            <input type="text" id="referensi_publikasi" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">kolektor:</label>
+            <input type="text" id="kolektor" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">tahun_penemuan:</label>
+            <input type="text" id="tahun_penemuan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">literatur:</label>
+            <input type="text" id="literatur" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">extra:</label>
+            <input type="text" id="extra" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">kondisi_benda:</label>
+            <input type="text" id="kondisi_benda" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">keterangan:</label>
+            <input type="text" id="keterangan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">tanggal_pencatatan:</label>
+            <input type="text" id="tanggal_pencatatan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">foto:</label>
+            <input type="text" id="foto" required />
           </div>
 
           <a href="/tabel/vertebrata.html" class="main-btn dark-btn rounded-full btn-hover"
@@ -54,7 +189,7 @@
       let id = params.get("id");
 
       const getDataById = (id) => {
-        fetch(API_ENDPOINT + "/invertebrata/" + id)
+        fetch(API_ENDPOINT + "/vertebrata/" + id)
           .then((response) => response.json())
           .then((data) => {
             displayDataById(data.data.data);
@@ -63,7 +198,7 @@
       };
 
       const postData = (data) => {
-    fetch(API_ENDPOINT + '/invertebrata', {
+    fetch(API_ENDPOINT + '/vertebrata', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -87,12 +222,72 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     // Mengambil nilai dari input
-    const nama = document.getElementById("nama").value;
-    const lokasi_ditemukan = document.getElementById("lokasi_ditemukan").value;
-    const waktu_ditemukan = document.getElementById("waktu_ditemukan").value;
+        const no = document.getElementById("no").value;
+
+        const registrasi = document.getElementById("registrasi").value;
+        const inventarisasi = document.getElementById("inventarisasi").value;
+        const laci = document.getElementById("laci").value;
+        const kotak = document.getElementById("kotak").value;
+        const koleksi_baru = document.getElementById("koleksi_baru").value;
+        const koleksi_lama = document.getElementById("koleksi_lama").value;
+
+        const pulau = document.getElementById("pulau").value;
+        const spesies = document.getElementById("spesies").value;
+        const famili = document.getElementById("famili").value;
+        const jenis_koleksi = document.getElementById("jenis_koleksi").value;
+        const determinasi = document.getElementById("determinasi").value;
+        const spesimen = document.getElementById("spesimen").value;
+        const tipe_koleksi = document.getElementById("tipe_koleksi").value;
+        const jumlah_utuh = document.getElementById("jumlah_utuh").value;
+        const jumlah_pecahan = document.getElementById("jumlah_pecahan").value;
+        const jumlah_gabungan = document.getElementById("jumlah_gabungan").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const koordinat_lokasi = document.getElementById("koordinat_lokasi").value;
+        const formasi = document.getElementById("formasi").value;
+        const cara_perolehan = document.getElementById("cara_perolehan").value;
+        const umur = document.getElementById("umur").value;
+        const referensi_publikasi = document.getElementById("referensi_publikasi").value;
+        const kolektor = document.getElementById("kolektor").value;
+        const tahun_penemuan = document.getElementById("tahun_penemuan").value;
+        const literatur = document.getElementById("literatur").value;
+        const extra = document.getElementById("extra").value;
+        const kondisi_benda = document.getElementById("kondisi_benda").value;
+        const keterangan = document.getElementById("keterangan").value;
+        const tanggal_pencatatan = document.getElementById("tanggal_pencatatan").value;
+        const foto = document.getElementById("foto").value;
 
     // Memanggil fungsi postData dengan nilai yang diambil dari form
-    postData({ nama: nama, lokasi_ditemukan: lokasi_ditemukan, waktu_ditemukan: waktu_ditemukan });
+    postData({ no: no, 
+              registrasi: registrasi, 
+              inventarisasi: inventarisasi, 
+              laci: laci, 
+              kotak: kotak, 
+              koleksi_baru: koleksi_baru, 
+              koleksi_lama: koleksi_lama, 
+              pulau: pulau, 
+              spesies: spesies, 
+              famili: famili, 
+              jenis_koleksi: jenis_koleksi, 
+              determinasi: determinasi, 
+              spesimen: spesimen, 
+              tipe_koleksi: tipe_koleksi, 
+              jumlah_utuh: jumlah_utuh, 
+              jumlah_pecahan: jumlah_pecahan, 
+              jumlah_gabungan: jumlah_gabungan, 
+              lokasi: lokasi, 
+              koordinat_lokasi: koordinat_lokasi, 
+              formasi: formasi, 
+              cara_perolehan: cara_perolehan, 
+              umur: umur, 
+              referensi_publikasi: referensi_publikasi, 
+              kolektor: kolektor, 
+              tahun_penemuan: tahun_penemuan, 
+              literatur: literatur, 
+              extra: extra, 
+              kondisi_benda: kondisi_benda, 
+              keterangan: keterangan, 
+              tanggal_pencatatan: tanggal_pencatatan, 
+              foto: foto, });
 });
 
 

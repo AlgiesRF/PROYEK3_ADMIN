@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>create Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+    
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    
+      th {
+        background-color: #dddddd;
+      }
+      </style>
+  </head>
+  <body>
+    <br>
+    <div class="card-style mb-30 table-responsive">
+      <h6 class="mb-10">Data Vertebrata</h6>
+      <!-- <p class="text-sm mb-20">
+        For basic styling—light padding and only horizontal
+        dividers—use the class table.
+      </p> -->
+      <!--SEARCH-->
+
+      <table style="width:100%" id="">
+        <tbody id="result"></tbody>
+        <thead>
+          <tr>
+            <th>registrasi</th>
+            <th>inventarisasi</th>
+            <th>laci</th>
+            <th>kotak</th>
+            <th>famili</th>
+            <th>koleksi_baru</th>
+            <th>koleksi_lama</th>
+          </tr>
+        </thead> 
+      </table>
+    </div>      
+
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/vertebrata/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      getDataById(id); //move this here
+
+    const displayDataById = (data) => {
+      document.getElementById("detail-id").value = data.id;
+      document.getElementById("detail-no").value = data.no = (data2) =>{
+
+      document.getElementById("detail-registrasi").value = data2.registrasi;
+      document.getElementById("detail-inventarisasi").value = data2.inventarisasi;
+      document.getElementById("detail-laci").value = data2.laci;
+      document.getElementById("detail-kotak").value = data2.kotak;
+      document.getElementById("detail-koleksi_baru").value = data2.koleksi_baru;
+      document.getElementById("detail-koleksi_lama").value = data2.koleksi_lama;
+      };
+    }
+
+    // document
+    //     .getElementById("detail-form")
+    //     .addEventListener("submit", function (e) {
+    //       e.preventDefault();
+    //       let id = document.getElementById("detail-id").value;
+    //       let registrasi = document.getElementById("detail-registrasi").value;
+    //       let inventarisasi = document.getElementById("detail-inventarisasi").value;
+    //       let laci = document.getElementById("detail-laci").value;
+    //       let kotak = document.getElementById("detail-kotak").value;
+    //       let koleksi_baru = document.getElementById("detail-koleksi_baru").value;
+    //       let koleksi_lama = document.getElementById("detail-koleksi_lama").value;
+
+    //       fetch(API_ENDPOINT + "/invertebrata/" + id, {
+    //         method: "PUT",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //           registrasi: registrasi,
+    //           inventarisasi: inventarisasi,
+    //           laci: laci,
+    //           kotak: kotak,
+    //           koleksi_baru: koleksi_baru,
+    //           koleksi_lama: koleksi_lama,
+    //         }),
+    //       })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //           console.log("Success:", data);
+    //           window.location.href = "/tabel/vertebrata.html";
+    //         })
+    //         .catch((error) => {
+    //           console.error("Error:", error);
+    //         });
+    //     });
+
+    const displayData = (dataArray) => {
+    let output = "";
+    dataArray.forEach(function(object, index) {
+        output += `
+        <tr>
+        <td>${object.registrasi}</td>
+        <td>${object.inventarisasi}</td>
+        <td>${object.laci}</td>
+        <td>${object.kotak}</td>
+        <td>${object.koleksi_baru}</td>
+        <td>${object.koleksi_lama}</td>
+        `;
+      });
+      document.getElementById("result").innerHTML = output;
+    }
+
+
+
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>

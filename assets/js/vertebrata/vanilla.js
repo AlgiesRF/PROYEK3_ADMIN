@@ -22,7 +22,16 @@ const getDataById = (id) => {
 
 const displayDataById = (data) => {
     document.getElementById("id").value = data.id;
-    document.getElementById("no").value = data.no;
+    document.getElementById("no").value = data.no = (data2) =>{
+
+    document.getElementById("registrasi").value = data2.registrasi;
+    document.getElementById("inventarisasi").value = data2.inventarisasi;
+    document.getElementById("laci").value = data2.laci;
+    document.getElementById("kotak").value = data2.kotak;
+    document.getElementById("koleksi_baru").value = data2.koleksi_baru;
+    document.getElementById("koleksi_lama").value = data2.koleksi_lama;
+    };
+
     document.getElementById("pulau").value = data.pulau;
     document.getElementById("spesies").value = data.spesies;
     document.getElementById("famili").value = data.famili;
@@ -68,7 +77,6 @@ const displayData = (dataArray) => {
         output += `
         <tr>
         <td>${index+1}</td>
-        <td>${object.no}</td>
         <td>${object.pulau}</td>
         <td>${object.spesies}</td>
         <td>${object.famili}</td>
@@ -102,6 +110,35 @@ const displayData = (dataArray) => {
     });
     document.getElementById("result").innerHTML = output;
 
+
+        // Event listener untuk button update
+        let detailButtons = document.querySelectorAll('.detail');
+        detailButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                let id = this.getAttribute('data-id');
+                getDataById(id);
+                window.location.href = '/detail/vertebrata.html?id=' + id;
+                let dataObject = dataArray.find(function (object) {
+                    return object.id === id;
+                });
+                    document.getElementById("detail-id").value = dataObject.id;
+                    document.getElementById("detail-no").value = dataObject.no = (data2) =>{
+                
+                    document.getElementById("detail-registrasi").value = data2.registrasi;
+                    document.getElementById("detail-inventarisasi").value = data2.inventarisasi;
+                    document.getElementById("detail-laci").value = data2.laci;
+                    document.getElementById("detail-kotak").value = data2.kotak;
+                    document.getElementById("detail-koleksi_baru").value = data2.koleksi_baru;
+                    document.getElementById("detail-koleksi_lama").value = data2.koleksi_lama;
+                    };
+                
+
+            });
+        });
+
+
+
+
     // Event listener untuk button update
     let updateButtons = document.querySelectorAll('.update');
     updateButtons.forEach(function (button) {
@@ -114,6 +151,14 @@ const displayData = (dataArray) => {
             });
             document.getElementById("update-id").value = dataObject.id;
             document.getElementById("update-no").value = dataObject.no;
+
+            document.getElementById("update-registrasi").value = dataObject.registrasi;
+            document.getElementById("update-inventarisasi").value = dataObject.inventarisasi;
+            document.getElementById("update-laci").value = dataObject.laci;
+            document.getElementById("update-kotak").value = dataObject.kotak;
+            document.getElementById("update-koleksi_baru").value = dataObject.koleksi_baru;
+            document.getElementById("update-koleksi_lama").value = dataObject.koleksi_lama;
+
             document.getElementById("update-pulau").value = dataObject.pulau;
             document.getElementById("update-spesies").value = dataObject.spesies;
             document.getElementById("update-famili").value = dataObject.famili;
@@ -175,6 +220,14 @@ const displayData = (dataArray) => {
     
         // Mengambil nilai dari input
         const no = document.getElementById("no").value;
+
+        const registrasi = document.getElementById("registrasi").value;
+        const inventarisasi = document.getElementById("inventarisasi").value;
+        const laci = document.getElementById("laci").value;
+        const kotak = document.getElementById("kotak").value;
+        const koleksi_baru = document.getElementById("koleksi_baru").value;
+        const koleksi_lama = document.getElementById("koleksi_lama").value;
+
         const pulau = document.getElementById("pulau").value;
         const spesies = document.getElementById("spesies").value;
         const famili = document.getElementById("famili").value;
@@ -201,7 +254,7 @@ const displayData = (dataArray) => {
         const foto = document.getElementById("foto").value;
     
         // Memanggil fungsi postData dengan nilai yang diambil dari form
-        postData({ no: no, pulau: pulau, spesies: spesies, famili: famili, jenis_koleksi: jenis_koleksi, determinasi: determinasi, spesimen: spesimen, tipe_koleksi: tipe_koleksi, jumlah_utuh: jumlah_utuh, jumlah_pecahan: jumlah_pecahan, jumlah_gabungan: jumlah_gabungan, lokasi: lokasi, koordinat_lokasi: koordinat_lokasi, formasi: formasi, cara_perolehan: cara_perolehan, umur: umur, referensi_publikasi: referensi_publikasi, kolektor: kolektor, tahun_penemuan: tahun_penemuan, literatur: literatur, extra: extra, kondisi_benda: kondisi_benda, keterangan: keterangan, tanggal_pencatatan: tanggal_pencatatan, foto: foto,});
+        postData({ no: no, registrasi: registrasi, inventarisasi: inventarisasi, laci: laci, kotak: kotak, koleksi_baru: koleksi_baru, koleksi_lama: koleksi_lama, pulau: pulau, spesies: spesies, famili: famili, jenis_koleksi: jenis_koleksi, determinasi: determinasi, spesimen: spesimen, tipe_koleksi: tipe_koleksi, jumlah_utuh: jumlah_utuh, jumlah_pecahan: jumlah_pecahan, jumlah_gabungan: jumlah_gabungan, lokasi: lokasi, koordinat_lokasi: koordinat_lokasi, formasi: formasi, cara_perolehan: cara_perolehan, umur: umur, referensi_publikasi: referensi_publikasi, kolektor: kolektor, tahun_penemuan: tahun_penemuan, literatur: literatur, extra: extra, kondisi_benda: kondisi_benda, keterangan: keterangan, tanggal_pencatatan: tanggal_pencatatan, foto: foto,});
     });
     getData();
 
