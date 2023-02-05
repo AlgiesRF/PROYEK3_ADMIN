@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Sign Up | PlainAdmin Demo</title>
+
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="update-form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Update BMN</h1>
+
+          <div class="input-style-1">
+            <input type="hidden" id="update-_id" />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-no_register">No Register:</label>
+            <input type="text" id="update-no_register" required/>
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-kategori_bmn">Kategori BMN:</label>
+            <input type="text" id="update-kategori_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-tipe_bmn">Tipe BMN:</label>
+            <input type="text" id="update-tipe_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nilai_perolehan">Nilai Perolehan:</label>
+            <input type="text" id="update-nilai_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="update-nilai_buku">Nilai Buku:</label>
+            <input type="text" id="update-nilai_buku" required />
+          </div>
+
+            <a href="/tabel/bmn.html" class="main-btn dark-btn rounded-full btn-hover"
+            >BACK
+            </a>
+
+            <button type="submit" id="update-submit"
+              class="main-btn warning-btn rounded-full btn-hover"
+              >UPDATE</button
+            >
+
+        </div>
+      </div>
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+
+      let params = new URLSearchParams(location.search);
+      let _id = params.get("_id");
+
+      const getDataById = (_id) => {
+        fetch(API_ENDPOINT + "/bmn/" + _id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      getDataById(_id); //move this here
+
+      const displayDataById = (data) => {
+        document.getElementById("update-_id").value = data._id;
+        document.getElementById("update-no_register").value = data.no_register;
+        document.getElementById("update-kategori_bmn").value = data.kategori_bmn;
+        document.getElementById("update-tipe_bmn").value = data.tipe_bmn;
+        document.getElementById("update-nilai_perolehan").value = data.nilai_perolehan;
+        document.getElementById("update-nilai_buku").value = data.nilai_buku;
+      };
+
+      document
+        .getElementById("update-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let _id = document.getElementById("update-_id").value;
+          let no_register = document.getElementById("update-no_register").value;
+          let kategori_bmn = document.getElementById("update-kategori_bmn").value;
+          let tipe_bmn = document.getElementById("update-tipe_bmn").value;
+          let nilai_perolehan = document.getElementById("update-nilai_perolehan").value;
+          let nilai_buku = document.getElementById("update-nilai_buku").value;
+          
+          fetch(API_ENDPOINT + "/bmn/" + _id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              no_register: no_register,
+              kategori_bmn: kategori_bmn,
+              tipe_bmn: tipe_bmn,
+              nilai_perolehan: nilai_perolehan,
+              nilai_buku: nilai_buku,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              window.location.href = "/tabel/bmn.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>

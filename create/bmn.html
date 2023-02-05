@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Data</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+    <form id="form">
+      <div class="col-lg-8 container">
+        <!-- input style start -->
+        <div class="card-style mb-30">
+          <h1 class="mb-25">Create BMN</h1>
+
+          <div class="input-style-1">
+            <label for="">No Register:</label>
+            <input type="text" id="no_register" required/>
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Kategori BMN:</label>
+            <input type="text" id="kategori_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Tipe BMN:</label>
+            <input type="text" id="tipe_bmn" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Nilai Perolehan:</label>
+            <input type="text" id="nilai_perolehan" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">Nilai Buku</label>
+            <input type="text" id="nilai_buku" required />
+          </div>
+
+          <a href="/tabel/bmn.html" class="main-btn dark-btn rounded-full btn-hover"
+          >BACK
+          </a>
+
+            <button type="submit" id="submit"
+              class="main-btn secondary-btn rounded-full btn-hover"
+              >CREATE</button
+            >
+
+        </div>
+      </div>
+
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let _id = params.get("_id");
+
+      const getDataById = (_id) => {
+        fetch(API_ENDPOINT + "/bmn/" + _id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      const postData = (data) => {
+    fetch(API_ENDPOINT + '/bmn', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            window.location.href = "/tabel/bmn.html";
+        })
+        .catch(error => console.log(error));
+}
+
+
+// Mengambil elemen form
+const form = document.getElementById("form");
+
+// Menambahkan event listener untuk form submission
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Mengambil nilai dari input
+    const no_register = document.getElementById("no_register").value;
+    const kategori_bmn = document.getElementById("kategori_bmn").value;
+    const tipe_bmn = document.getElementById("tipe_bmn").value;
+    const nilai_perolehan = document.getElementById("nilai_perolehan").value;
+    const nilai_buku = document.getElementById("nilai_buku").value;
+
+    // Memanggil fungsi postData dengan nilai yang diambil dari form
+    postData({ 
+      no_register: no_register, 
+      kategori_bmn: kategori_bmn, 
+      tipe_bmn: tipe_bmn, 
+      nilai_perolehan: nilai_perolehan, 
+      nilai_buku: nilai_buku });
+});
+
+
+    </script>
+        <script src="/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/js/Chart.min.js"></script>
+        <script src="/assets/js/dynamic-pie-chart.js"></script>
+        <script src="/assets/js/moment.min.js"></script>
+        <script src="/assets/js/fullcalendar.js"></script>
+        <script src="/assets/js/jvectormap.min.js"></script>
+        <script src="/assets/js/world-merc.js"></script>
+        <script src="/assets/js/polyfill.js"></script>
+        <script src="/assets/js/main.js"></script>
+  </body>
+</html>
