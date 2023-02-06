@@ -23,12 +23,22 @@
 
           <div class="input-style-1">
             <label for="">Alamat:</label>
-            <input type="text" id="location" required />
+            <input type="text" id="username" required />
           </div>
 
           <div class="input-style-1">
-            <label for="">Title:</label>
-            <input type="text" id="title" required />
+            <label for="">password:</label>
+            <input type="text" id="password" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">role:</label>
+            <input type="text" id="role" required />
+          </div>
+
+          <div class="input-style-1">
+            <label for="">token:</label>
+            <input type="text" id="token" required />
           </div>
 
           <a href="/tabel/user.html" class="main-btn dark-btn rounded-full btn-hover"
@@ -86,11 +96,13 @@ form.addEventListener("submit", (e) => {
 
     // Mengambil nilai dari input
     const name = document.getElementById("name").value;
-    const location = document.getElementById("location").value;
-    const title = document.getElementById("title").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+    const token = document.getElementById("token").value;
 
     // Memanggil fungsi postData dengan nilai yang diambil dari form
-    postData({ name: name, location: location, title: title });
+    postData({ name: name, username: username, password: password, role: role, token: token, });
 });
 
 

@@ -23,8 +23,10 @@ const getDataById = (id) => {
 const displayDataById = (data) => {
     document.getElementById("id").value = data.id;
     document.getElementById("name").value = data.name;
-    document.getElementById("location").value = data.location;
-    document.getElementById("title").value = data.title;
+    document.getElementById("username").value = data.username;
+    document.getElementById("password").value = data.password;
+    document.getElementById("role").value = data.role;
+    document.getElementById("token").value = data.token;
 }
 
 const deleteData = (id) => {
@@ -47,8 +49,9 @@ const displayData = (dataArray) => {
         <tr>
         <td>${index+1}</td>
         <td>${object.name}</td>
-        <td>${object.location}</td>
-        <td>${object.title}</td>
+        <td>${object.username}</td>
+        <td>${object.password}</td>
+        <td>${object.role}</td>
         <td>
         <button class="update btn btn-warning" data-id="${object.id}">Update</button>
         <button class="delete btn btn-danger" data-id="${object.id}">Delete</button>
@@ -70,8 +73,10 @@ const displayData = (dataArray) => {
             });
             document.getElementById("update-id").value = dataObject.id;
             document.getElementById("update-name").value = dataObject.name;
-            document.getElementById("update-location").value = dataObject.location;
-            document.getElementById("update-title").value = dataObject.title;
+            document.getElementById("update-username").value = dataObject.username;
+            document.getElementById("update-password").value = dataObject.password;
+            document.getElementById("update-role").value = dataObject.role;
+            document.getElementById("update-token").value = dataObject.token;
         });
     });
     
@@ -109,11 +114,13 @@ const displayData = (dataArray) => {
     
         // Mengambil nilai dari input
         const name = document.getElementById("name").value;
-        const location = document.getElementById("location").value;
-        const title = document.getElementById("title").value;
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const role = document.getElementById("role").value;
+        const token = document.getElementById("token").value;
     
         // Memanggil fungsi postData dengan nilai yang diambil dari form
-        postData({ name: name, location: location, title: title });
+        postData({ name: name, username: username, password: password, role: role, token: token,});
     });
     getData();
 

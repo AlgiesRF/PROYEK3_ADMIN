@@ -26,13 +26,23 @@
             </div>
   
             <div class="input-style-1">
-              <label for="update-location">Alamat:</label>
-              <input type="text" id="update-location" required />
+              <label for="update-username">Alamat:</label>
+              <input type="text" id="update-username" required />
             </div>
   
             <div class="input-style-1">
-              <label for="update-title">Waktu Ditemukan:</label>
-              <input type="text" id="update-title" required />
+              <label for="update-password">Waktu Ditemukan:</label>
+              <input type="text" id="update-password" required />
+            </div>
+
+            <div class="input-style-1">
+              <label for="update-role">role:</label>
+              <input type="text" id="update-role" required />
+            </div>
+
+            <div class="input-style-1">
+              <label for="update-token">token:</label>
+              <input type="text" id="update-token" required />
             </div>
 
             <a href="/tabel/user.html" class="main-btn dark-btn rounded-full btn-hover"
@@ -80,8 +90,10 @@
       const displayDataById = (data) => {
         document.getElementById("update-id").value = data.id;
         document.getElementById("update-name").value = data.name;
-        document.getElementById("update-location").value = data.location;
-        document.getElementById("update-title").value = data.title;
+        document.getElementById("update-username").value = data.username;
+        document.getElementById("update-password").value = data.password;
+        document.getElementById("update-role").value = data.role;
+        document.getElementById("update-token").value = data.token;
       };
 
       document
@@ -90,8 +102,10 @@
           e.preventDefault();
           let id = document.getElementById("update-id").value;
           let name = document.getElementById("update-name").value;
-          let location = document.getElementById("update-location").value;
-          let title = document.getElementById("update-title").value;
+          let username = document.getElementById("update-username").value;
+          let password = document.getElementById("update-password").value;
+          let role = document.getElementById("update-role").value;
+          let token = document.getElementById("update-token").value;
 
           fetch(API_ENDPOINT + "/user/" + id, {
             method: "PUT",
@@ -100,8 +114,10 @@
             },
             body: JSON.stringify({
               name: name,
-              location: location,
-              title: title,
+              username: username,
+              password: password,
+              role: role,
+              token: token,
             }),
           })
             .then((response) => response.json())
