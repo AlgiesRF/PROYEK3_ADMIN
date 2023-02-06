@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Data Invertebrata</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="/assets/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+  <body>
+    <br>
+      <form id="update-form">
+        <div class="col-lg-8 container">
+          <!-- input style start -->
+          <div class="card-style mb-30">
+            <h1 class="mb-25">Update Invertebrata</h1>
+  
+            <div class="input-style-1">
+              <input type="hidden" id="update-id" />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-nama">Nama:</label>
+              <input type="text" id="update-nama" required />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-lokasi_ditemukan">Alamat:</label>
+              <input type="text" id="update-lokasi_ditemukan" required />
+            </div>
+  
+            <div class="input-style-1">
+              <label for="update-waktu_ditemukan">Waktu Ditemukan:</label>
+              <input type="text" id="update-waktu_ditemukan" required />
+            </div>
+
+            <a href="/tabel/invertebrata.html" class="main-btn dark-btn rounded-full btn-hover"
+            >BACK
+            </a>
+  
+              <button type="submit" id="update-submit"
+                class="main-btn warning-btn rounded-full btn-hover"
+                >UPDATE</button
+              >
+              
+  
+            
+            <!-- end input -->
+            
+          </div>
+        </div>
+  
+        <!-- <input type="hidden" id="update-id" />
+        <label for="update-nama">Nama:</label>
+        <input type="text" id="update-nama" required /> -->
+        <!-- <label for="update-lokasi_ditemukan">Lokasi Ditemukan:</label>
+        <input type="text" id="update-lokasi_ditemukan" required /> -->
+        <!-- <label for="update-waktu_ditemukan">Waktu Ditemukan:</label>
+        <input type="text" id="update-waktu_ditemukan" required />
+        <button type="submit" id="update-submit">Update</button> -->
+    </form>
+    <script>
+      const API_ENDPOINT = "https://sbc-sebatcabut.herokuapp.com";
+
+      let params = new URLSearchParams(location.search);
+      let id = params.get("id");
+
+      const getDataById = (id) => {
+        fetch(API_ENDPOINT + "/invertebrata/" + id)
+          .then((response) => response.json())
+          .then((data) => {
+            displayDataById(data.data.data);
+          })
+          .catch((error) => console.log(error));
+      };
+
+      getDataById(id); //move this here
+
+      const displayDataById = (data) => {
+        document.getElementById("update-id").value = data.id;
+        document.getElementById("update-nama").value = data.nama;
+        document.getElementById("update-lokasi_ditemukan").value = data.lokasi_ditemukan;
+        document.getElementById("update-waktu_ditemukan").value = data.waktu_ditemukan;
+      };
+
+      document
+        .getElementById("update-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let id = document.getElementById("update-id").value;
+          let nama = document.getElementById("update-nama").value;
+          let lokasi_ditemukan = document.getElementById("update-lokasi_ditemukan").value;
+          let waktu_ditemukan = document.getElementById("update-waktu_ditemukan").value;
+
+          fetch(API_ENDPOINT + "/invertebrata/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nama: nama,
+              lokasi_ditemukan: lokasi_ditemukan,
+              waktu_ditemukan: waktu_ditemukan,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              window.location.href = "/tabel/invertebrata.html";
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+            <script src="/assets/js/bootstrap.bundle.min.js"></script>
+            <script src="/assets/js/Chart.min.js"></script>
+            <script src="/assets/js/dynamic-pie-chart.js"></script>
+            <script src="/assets/js/moment.min.js"></script>
+            <script src="/assets/js/fullcalendar.js"></script>
+            <script src="/assets/js/jvectormap.min.js"></script>
+            <script src="/assets/js/world-merc.js"></script>
+            <script src="/assets/js/polyfill.js"></script>
+            <script src="/assets/js/main.js"></script>
+  </body>
+</html>
