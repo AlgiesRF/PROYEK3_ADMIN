@@ -22,7 +22,7 @@
           </div>
 
           <div class="input-style-1">
-            <label for="">Alamat:</label>
+            <label for="">Username:</label>
             <input type="text" id="username" required />
           </div>
 
@@ -102,11 +102,12 @@ form.addEventListener("submit", (e) => {
     const token = document.getElementById("token").value;
 
     // Memanggil fungsi postData dengan nilai yang diambil dari form
-    postData({ name: name, username: username, password: password, role: role, token: token, });
+    postData({ name: name, 
+      username: username, 
+      password: password, 
+      role: role, 
+      token: token, });
 });
-
-
-
 
 
     </script>
