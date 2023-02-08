@@ -53,11 +53,6 @@ const displayData = (dataArray) => {
         <td>${object.password}</td>
         <td>${object.role}</td>
         <td>${object.token}</td>
-
-        <td>
-        <button class="update btn btn-warning" data-id="${object.id}">Update</button>
-        <button class="delete btn btn-danger" data-id="${object.id}">Delete</button>
-        </td>
         </tr>
         `;
     });
